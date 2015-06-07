@@ -1,2 +1,3 @@
 v0/db/*
 v0/node_modules/*
+*.log

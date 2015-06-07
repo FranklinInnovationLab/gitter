@@ -69,6 +69,7 @@ a {
 }
 
 ._review_content{
+	width: 500px;
 	display:inline-block;
 }
 
