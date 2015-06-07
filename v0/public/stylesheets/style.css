@@ -1,0 +1,83 @@
+body {
+	margin: 0px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background-color: #C2B280;
+}
+
+a {
+	color: #00B7FF;
+}
+
+.navbar{
+	width: 100%;
+	height: 25px;
+	background-color: #254868;
+}
+
+.title{
+	margin: 0px;
+	text-align: center;
+	color: #FFF;
+	font-size: 20px;
+}
+
+.review{
+	margin-top: 30px;
+	background-color: #FFF;
+	height: 100%;
+	width: 550px;
+	margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
+    border-radius: 25px;
+    border: 2px solid #8AC007;
+    padding: 20px; 
+}
+
+.review_form{
+	height: 75px;
+	margin-bottom: 20px;
+}
+
+.star_box{
+	float: left;
+	width: 25px;
+	height: 25px;
+	margin-right: 20px;
+}
+
+.content_box{
+	float: left;
+	width: 400px;
+	height: 70px;
+	margin-right: 20px;
+}
+
+.post_review{
+	float: left;
+	height: 25px;
+}
+
+._review-section{
+	height: 100%;
+	margin-bottom: 10px;
+}
+
+._review_num{
+	display:inline-block;
+	margin-right: 20px;
+}
+
+._review_content{
+	display:inline-block;
+}
+
+#_name{
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.description{
+	display: inline-block;
+	margin-left: 30px;
+}

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	script(src='/javascripts/comment.js')
+	div(class="navbar")
+		p(class="title") Gitter - Yelp for programming libraries
+	div(class="review")
+		h3(id="_name") #{lib.name}
+		p(class="description") #{lib.description}
+		h5(style="margin-top: 30px") Write a review for #{lib.name}
+		hr
+		div(id="_reviews")
+			div(id="_new_review", style="display:block;")
+				form(onsubmit="submit_review(); return false;", class="review_form")
+					input(type='text', id='new_review_stars', placeholder='stars (out of 5)', class='star_box')
+					textarea(type='text', id='new_review_content', placeholder='review content',required, autofocus, class='content_box')
+					button(type='submit', class='post_review') Post
+			div(id="_review-box", style="display:block;")
+				div(class="_review-section", style="display:none")
+					p(class="_review_num") 1/5 stars 
+					p(class="_review_content") ASD
+			
