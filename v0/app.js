@@ -4,11 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
+var flash = require('connect-flash');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var expressSession = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var libs = require('./routes/lib');
 var api = require('./routes/api');
+var auth = require('./routes/auth');
 
 var app = express();
 
@@ -22,12 +28,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expressSession({secret: 'bobiscool'}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/lib', libs);
 app.use('/api', api);
+app.use('/', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

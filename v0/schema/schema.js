@@ -16,7 +16,14 @@ var reviewSchema = Schema({
 })
 var Review = mongoose.model('Review', reviewSchema);
 
+var userSchema = Schema({
+	email: String,
+	password: String
+})
+var User = mongoose.model('User', userSchema);
+
 module.exports = {
 	Lib: Lib,
-	Review: Review
+	Review: Review,
+	User: User
 };
