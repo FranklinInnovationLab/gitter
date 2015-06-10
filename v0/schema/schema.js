@@ -5,14 +5,16 @@ mongoose.connect('mongodb://localhost/gitter');
 
 var libSchema = Schema({
 	name: String,
-	description: String
+	description: String,
+	pic_url: String
 })
 var Lib = mongoose.model('Lib', libSchema);
 
 var reviewSchema = Schema({
 	lib: { type: Schema.ObjectId, ref:"Lib" },
 	stars: Number,
-	content: String
+	content: String,
+	user: { type: Schema.ObjectId, ref:"User" }
 })
 var Review = mongoose.model('Review', reviewSchema);
 

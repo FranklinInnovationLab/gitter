@@ -1,11 +1,12 @@
-function get_comments(){
+function get_reviews(){
 	var lib = document.getElementById('_name').innerHTML;
 	$.ajax({
 		type: "GET",
         url: "/api/review/" + lib,
         success: function(data){
         	var response = data['response'];
-        	populate_comments(response);
+        	console.log(response);
+        	populate_reviews(response);
         	window.scrollTo(0, 0); //normally it overflows and the window gets scrolled down
     	},
     	error: function (request, status, error) {
@@ -14,7 +15,7 @@ function get_comments(){
     });
 }
 
-function populate_comments(reviewArr){
+function populate_reviews(reviewArr){
 	for (var i = 0; i < reviewArr.length; i++){
 		var review = reviewArr[i];
 		var stars = review.stars;
@@ -28,18 +29,19 @@ function populate_comments(reviewArr){
 }
 
 function submit_review(){
+	var email = document.getElementById('_user').innerHTML;
 	var lib = document.getElementById('_name').innerHTML;
 	var stars = document.getElementById('new_review_stars').value;
 	var content = document.getElementById('new_review_content').value;
 	$.ajax({
 		type: "POST",
 		url: "/api/review/" + lib,
-		data: {content: content, stars: stars},
+		data: {content: content, stars: stars, email: email},
 		success: function(data){
 			if(data['success']){
 				location.reload();
 			}else{
-				alert("comments are broken. ur doomed. gg.");
+				alert("reviews are broken. ur doomed. gg.");
 			}
 		},
 		error: function (request, status, error) {
@@ -49,5 +51,5 @@ function submit_review(){
 }
 
 $(document).ready(function() {
-	get_comments();
+	get_reviews();
 });

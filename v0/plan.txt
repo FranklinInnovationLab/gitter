@@ -1,0 +1,10 @@
+dev plan:
+- tues, 15/06/09 - post + user system, post spam detection, lib picture
+- wed, 15/06/10 - review stars, review Q&A
+- thur, 15/06/11 -  user_profile, UI to add library framework manually
+
+
+testing plan:
+- tues, 15/06/09 - ask for ppl's opinions on a review / Q&A platform
+- wed, 15/06/10 - test a Q&A with an ask.fm
+- thur, 15/06/11 - fill out a profile page with manual review, ask ppl to try a new library <-- try to confirm that this page can add value

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var schema = require('./../schema/schema.js');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 router.get('/review/:lib', function(req, res) {
 	schema.Lib.findOne({name: req.param("lib")}, function(err,lib) {
@@ -20,14 +21,23 @@ router.post('/review/:lib', function (req, res) {
 		} else if (stars < 0){
 			stars = 0;
 		}
-		var review = new schema.Review({ lib: lib._id, stars: stars, content: req.body.content });
-		review.save(function (err) {
-            if (err){
-                res.jsonp({ success: false });
-            }else{
-            	res.jsonp({ success: true });
-            }
-        });
+		schema.User.findOne({email: req.param("email")}, function(err, user){
+			schema.Review.findOne({user: user, lib: lib}, function(err, review){
+				//if user have already written about review, then stop them from spamming
+				if(review){
+					res.jsonp({ success: false });
+					return;
+				}
+				var review = new schema.Review({ lib: lib._id, stars: stars, content: req.body.content, user: user });
+				review.save(function (err) {
+            		if (err){
+                		res.jsonp({ success: false });
+            		}else{
+            			res.jsonp({ success: true });
+            		}
+        		});
+			});
+		});
     })
 });
 
